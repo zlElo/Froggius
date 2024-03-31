@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+loggius_maximus.egg-info/PKG-INFO
+loggius_maximus.egg-info/SOURCES.txt
+loggius_maximus.egg-info/dependency_links.txt
+loggius_maximus.egg-info/top_level.txt
+loggiusm/__init__.py
+loggiusm/logger.py
