@@ -17,6 +17,18 @@ Froggius is a dumb easy logging tool for python
 ## Introduction
 Froggius is a lightweight python libary, which is designed for easy to use logging for all your programs. It makes it easy for everybody, but also brings a lot of options to configure it like you need it. An very interesting feature for example is the error catching for functions, which makes it easy to log unexpected errors, warnings etc.
 
+## Installation
+You can install Froggius with following command:
+```
+pip install froggius
+```
+
+Alternatively you can clone this repository and install then:
+```bash
+git clone https://github.com/zlElo/Froggius.git
+cd Froggius
+pip install .
+```
 
 ## Usage
 Here are examples for the usage of Froggius. Import statement is following:
