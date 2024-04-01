@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-with open("pypi.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
@@ -12,7 +12,7 @@ setup(
     author='zlElo',
     author_email="mail@zlelo.de",
     url = "https://github.com/zlElo/Froggius",
-    keywords=['pypi', 'cicd', 'python'],
+    keywords=['logging', 'logger', 'easy-to-use', 'log'],
     classifiers=[
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
