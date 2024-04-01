@@ -2,6 +2,13 @@
   <img src="https://github.com/zlElo/Froggius/blob/main/res/froggius-cropped.png?raw=true" style="width: 30%">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/github/languages/code-size/zlElo/Froggius" alt="GitHub code size in bytes" />
+  <img src="https://img.shields.io/github/last-commit/zlElo/Froggius" alt="GitHub last commit" />
+  <img src="https://img.shields.io/github/commit-activity/m/zlElo/Froggius" alt="GitHub commit activity month" />
+  <img src="https://img.shields.io/github/license/zlElo/Froggius" alt="GitHub license" />
+</p>
+
 # Froggius
 Froggius is a dumb easy logging tool for python
 
