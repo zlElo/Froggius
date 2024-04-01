@@ -1,23 +1,23 @@
-from loggiusm.logger import LogMx
+from froggius.logger import Froggius
 
 # ----- Logging/Debugging -----
 # Example normal logging
-LogMx.debug('This is a normal debug log')
+Froggius.debug('This is a normal debug log')
 
 # This writes the log to a log file
-LogMx.debug('This is a normal debug log', 'tests/example.log', print_out=False)
+Froggius.debug('This is a normal debug log', 'tests/example.log', print_out=False)
 
 
 # ----- Errors -----
 # Example error
-LogMx.error('This is an error log')
+Froggius.error('This is an error log')
 
 # This writes the error to a log file
-LogMx.error('This is an error log', 'tests/example.log', print_out=False)
+Froggius.error('This is an error log', 'tests/example.log', print_out=False)
 
 
 # ----- Catching unexpected Errors -----
-@LogMx.catch(file_path='tests/example.log')
+@Froggius.catch(file_path='tests/example.log')
 def example_function():
     """
     Not working function, because of division by zero

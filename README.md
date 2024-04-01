@@ -1,17 +1,17 @@
-# Loggius-maximus
-Loggius-maximus is a dumb easy logging tool for python
+# Froggius
+Froggius is a dumb easy logging tool for python
 
 ---------
 
 ## Introduction
-Loggius-maximus is a lightweight python libary, which is designed for easy to use logging for all your programs. It makes it easy for everybody, but also brings a lot of options to configure it like you need it. An very interesting feature for example is the error catching for functions, which makes it easy to log unexpected errors, warnings etc.
+Froggius is a lightweight python libary, which is designed for easy to use logging for all your programs. It makes it easy for everybody, but also brings a lot of options to configure it like you need it. An very interesting feature for example is the error catching for functions, which makes it easy to log unexpected errors, warnings etc.
 
 
 ## Usage
-Here are examples for the usage of Loggius-Maximus. Import statement is following:
+Here are examples for the usage of Froggius. Import statement is following:
 
 ```py
-from loggiusm.logger import LogMx
+from froggius.logger import Froggius
 ```
 
 ### Using debugger/logger
@@ -23,10 +23,10 @@ Use it as debugger/logger with following possible arguments:
 
 ```py
 # Example normal logging
-LogMx.debug('This is a normal debug log')
+Froggius.debug('This is a normal debug log')
 
 # This writes the log to a log file
-LogMx.debug('This is a normal debug log', 'tests/example.log', print_out=False)
+Froggius.debug('This is a normal debug log', 'tests/example.log', print_out=False)
 ```
 
 ### Using with predefinied errors
@@ -39,18 +39,17 @@ Use it as error logger with following possible arguments:
 
 ```py
 # Example error
-LogMx.error('This is an error log')
+Froggius.error('This is an error log')
 
 # This writes the error to a log file
-LogMx.error('This is an error log', 'tests/example.log', print_out=False)
+Froggius.error('This is an error log', 'tests/example.log', print_out=False)
 ```
 
 ### Using catching errors
 Use the catching errors methode, to catch and handle unexpected errors, warnings etc:
 
 ```py
-
-@LogMx.catch(file_path='tests/example.log')
+@Froggius.catch(file_path='tests/example.log')
 def example_function():
     """
     Information: Not working function, because of division by zero

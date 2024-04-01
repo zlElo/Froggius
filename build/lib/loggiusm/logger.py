@@ -1,6 +1,6 @@
 """
-Loggius-Maximus
-Version: v0.1.1
+Froggius
+Version: v0.1.2
 License: GPLv3
 
 Author of this file: zlElo
@@ -12,7 +12,7 @@ import traceback
 
 class LogMx():
     """
-    Main class of Loggius-Maximus
+    Main class of Froggius
     Includes logging methods
     """
     def debug(log_msg, file_path=None, highliting=True, print_out=True):

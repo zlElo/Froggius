@@ -1,5 +1,5 @@
 """
-Loggius-Maximus
+Froggius
 Version: v0.1.1
 License: GPLv3
 
@@ -10,9 +10,9 @@ import datetime
 import sys
 import traceback
 
-class LogMx():
+class Froggius():
     """
-    Main class of Loggius-Maximus
+    Main class of Froggius
     Includes logging methods
     """
     def debug(log_msg, file_path=None, highliting=True, print_out=True):
@@ -118,7 +118,7 @@ class LogMx():
                     file = traceback_info[-1][0]
                     function_name = traceback_info[-1][2]
 
-                    LogMx.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
+                    Froggius.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
             return wrapper
         return decorator
         
