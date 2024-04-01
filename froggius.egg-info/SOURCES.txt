@@ -1,9 +1,0 @@
-LICENSE
-README.md
-setup.py
-froggius/__init__.py
-froggius/logger.py
-froggius.egg-info/PKG-INFO
-froggius.egg-info/SOURCES.txt
-froggius.egg-info/dependency_links.txt
-froggius.egg-info/top_level.txt

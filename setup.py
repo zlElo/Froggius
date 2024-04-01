@@ -1,9 +1,13 @@
 from setuptools import find_packages, setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='froggius',
     packages=find_packages(include=['froggius']),
     description='Froggius is a dumb easy logging tool for python',
+    long_description=long_description,
     version='0.1.3',
     author='zlElo',
     author_email="mail@zlelo.de",
