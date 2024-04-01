@@ -11,6 +11,7 @@ class Froggius():
     Main class of Froggius
     Includes logging methods
     """
+
     def debug(log_msg, file_path=None, print_out=True):
         """
         Writes logs, optionally to a file.
@@ -132,6 +133,18 @@ class Froggius():
             print(log_string, file=sys.stdout)
 
     def warning(log_msg, file_path=None, highlighting=True, print_out=True):
+        """
+        Logs a warning message with an optional file path, highlighting, and print out.
+
+        Parameters:
+            log_msg (str): The warning message to be logged.
+            file_path (str, optional): The file path to write the log message to. Defaults to None.
+            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
+            print_out (bool, optional): Whether to print the log message to the console. Defaults to True.
+
+        Returns:
+            None
+        """
         current_date = datetime.datetime.now()
 
         if highlighting:
