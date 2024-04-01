@@ -119,7 +119,7 @@ class Froggius():
         current_date = datetime.datetime.now()
 
         if highlighting:
-            log_string = f'\033[32m[INF]\033[0m [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'[\033[32mINF\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         else:
             log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         
