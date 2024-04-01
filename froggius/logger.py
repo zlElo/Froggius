@@ -11,7 +11,7 @@ class Froggius():
     Main class of Froggius
     Includes logging methods
     """
-    def debug(log_msg, file_path=None, highliting=True, print_out=True):
+    def debug(log_msg, file_path=None, print_out=True):
         """
         Writes logs, optionally to a file.
 
@@ -25,17 +25,9 @@ class Froggius():
             Whether the DEBUG tag should be highlighted with ANSI escape sequences, by default True
         print_out : bool, optional
             Whether the log should be printed to the stdout, by default True
-
-        Returns
-        -------
-        str
-            The log string if print_out is set to False
         """
         current_date = datetime.datetime.now()
-        if highliting:
-            log_string = f'\033[92m[DBG]\033[0m [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
-        else:
-            log_string = f'[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+        log_string = f'[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
 
         # check for filepath
         if file_path is not None:
@@ -44,8 +36,6 @@ class Froggius():
 
         if print_out:
             print(log_string, file=sys.stdout)
-        else:
-            return log_string
 
     def error(log_msg, file_path=None, highlighting=True, print_out=True, line=None):
         """
@@ -66,11 +56,6 @@ class Froggius():
             A list containing information about the line where the error occurred,
             by default None. The list should contain [line number, file name,
             function name].
-
-        Returns
-        -------
-        str or None
-            The log string if print_out is set to False
         """
 
         # get datetime
@@ -86,18 +71,17 @@ class Froggius():
                 log.write(f'\n[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}')
 
         if print_out == True:
-            print(log_string, file=sys.stdout)
-        else:
-            return log_string
+            print(log_string, file=sys.stderr)
     
     @staticmethod
-    def catch(file_path=None):
+    def catch(file_path=None, continue_onexpception=True):
         """
         A decorator that catches exceptions and logs them with LogMx.error
 
         Parameters
         ----------
         file_path : str, optional
+        contiune_onexpception : bool, optional
 
         Returns
         -------
@@ -115,6 +99,24 @@ class Froggius():
                     function_name = traceback_info[-1][2]
 
                     Froggius.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
+
+                    if not continue_onexpception:
+                        raise e
             return wrapper
         return decorator
+    
+    def information(log_msg, file_path=None, highlighting=True, print_out=True):
+        current_date = datetime.datetime.now()
+
+        if highlighting:
+            log_string = f'\033[92m[INF]\033[0m [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+        else:
+            log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         
+        # check for filepath
+        if file_path is not None:
+            with open(file_path, 'a') as log:
+                log.write(f'\n[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
+        
+        if print_out == True:
+            print(log_string, file=sys.stdout)
