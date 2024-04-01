@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/zlElo/Froggius/blob/main/res/froggius.png?raw=true">
+  <img src="https://github.com/zlElo/Froggius/blob/main/res/froggius-cropped.png?raw=true" style="width: 30%">
 </p>
 
 # Froggius
