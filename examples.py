@@ -20,6 +20,22 @@ Froggius.error('This is an error log')
 Froggius.error('This is an error log', 'tests/example.log', print_out=False)
 
 
+# ----- Informations -----
+# Example information
+Froggius.information('This is an information log')
+
+# This writes the information to a log file
+Froggius.information('This is an information log', 'tests/example.log', print_out=False)
+
+
+# ----- Warnings -----
+# Example warning
+Froggius.warning('This is a warning log')
+
+# This writes the warning to a log file
+Froggius.warning('This is a warning log', 'tests/example.log', print_out=False)
+
+
 # ----- Catching unexpected Errors -----
 @Froggius.catch(file_path='tests/example.log')
 def example_function():

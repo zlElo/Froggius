@@ -41,7 +41,6 @@ from froggius.logger import Froggius
 Use it as debugger/logger with following possible arguments:
 - log_msg (log message)
 - file_path (None by default, used to set up a log file [...] to append to this file. The file does not have to already exist, if it does not exist, it will be created)
-- highliting (True by deafult, used to colorize [DBG] etc.)
 - print_out (True by default, used to setup printing to console and stdout)
 
 ```py
@@ -66,6 +65,36 @@ Froggius.error('This is an error log')
 
 # This writes the error to a log file
 Froggius.error('This is an error log', 'tests/example.log', print_out=False)
+```
+
+### Using information logger
+Use it as information logger with following possible arguments:
+- log_msg (log message)
+- file_path (None by default, used to set up a log file [...] to append to this file. The file does not have to already exist, if it does not exist, it will be created)
+- highliting (True by default, used to colorize [INF] etc.)
+- print_out (True by default, used to setup printing to console and stdout)
+
+```py
+# Example information
+Froggius.information('This is an information log')
+
+# This writes the information to a log file
+Froggius.information('This is an information log', 'tests/example.log', print_out=False)
+```
+
+### Using warning logger
+Use it as warning logger with following possible arguments:
+- log_msg (log message)
+- file_path (None by default, used to set up a log file [...] to append to this file. The file does not have to already exist, if it does not exist, it will be created)
+- highliting (True by default, used to colorize [WRN] etc.)
+- print_out (True by default, used to setup printing to console and stdout)
+
+```py
+# Example warning
+Froggius.warning('This is a warning log')
+
+# This writes the warning to a log file
+Froggius.warning('This is a warning log', 'tests/example.log', print_out=False)
 ```
 
 ### Using catching errors

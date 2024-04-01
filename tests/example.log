@@ -1,3 +1,5 @@
-[DBG] [31/03/2024 14:21:40] This is a normal debug log
-[ERR] [31/03/2024 14:21:40] This is an error log  
-[ERR] [01/04/2024 09:15:00] division by zero | Occured on line: 28 in /Users/username/path/examples.py, example_function()
+[DBG] [01/04/2024 16:52:30] This is a normal debug log
+[ERR] [01/04/2024 16:52:30] This is an error log 
+[INF] [01/04/2024 16:52:30] This is an information log
+[WRN] [01/04/2024 16:52:30] This is a warning log
+[ERR] [01/04/2024 16:52:30] division by zero | Occured on line: 48 in /Users/username/path/examples.py, example_function()

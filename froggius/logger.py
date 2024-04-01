@@ -106,10 +106,20 @@ class Froggius():
         return decorator
     
     def information(log_msg, file_path=None, highlighting=True, print_out=True):
+        """
+        A function to log information with optional file output and highlighting.
+        
+        Parameters:
+            log_msg (str): The message to be logged.
+            file_path (str, optional): The file path to log to. Defaults to None.
+            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
+            print_out (bool, optional): Whether to print the log message. Defaults to True.
+        """
+
         current_date = datetime.datetime.now()
 
         if highlighting:
-            log_string = f'\033[92m[INF]\033[0m [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'\033[32m[INF]\033[0m [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         else:
             log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         
@@ -117,6 +127,22 @@ class Froggius():
         if file_path is not None:
             with open(file_path, 'a') as log:
                 log.write(f'\n[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
+        
+        if print_out == True:
+            print(log_string, file=sys.stdout)
+
+    def warning(log_msg, file_path=None, highlighting=True, print_out=True):
+        current_date = datetime.datetime.now()
+
+        if highlighting:
+            log_string = f'[\033[93mWRN\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+        else:
+            log_string = f'[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+
+        # check for filepath
+        if file_path is not None:
+            with open(file_path, 'a') as log:
+                log.write(f'\n[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
         
         if print_out == True:
             print(log_string, file=sys.stdout)
