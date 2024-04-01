@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:
@@ -10,6 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     version='0.1.4',
+    license='MPL-2.0',
     author='zlElo',
     author_email="mail@zlelo.de",
     url = "https://github.com/zlElo/Froggius",
