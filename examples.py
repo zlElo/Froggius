@@ -17,7 +17,7 @@ LogMx.error('This is an error log', 'tests/example.log', print_out=False)
 
 
 # ----- Catching unexpected Errors -----
-@LogMx.catch
+@LogMx.catch(file_path='tests/example.log')
 def example_function():
     """
     Not working function, because of division by zero

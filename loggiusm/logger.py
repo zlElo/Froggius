@@ -61,26 +61,21 @@ class LogMx():
             print(log_string, file=sys.stdout)
         else:
             return log_string
-        
-    def catch(func):
-        """
-        Catches an unexpected error from a function
-        -> prints to stdout by default
-        -> uses highlighting by default
-        -> needs function as argument: @LogMx.catch
-        """
+    
+    @staticmethod
+    def catch(file_path=None):
+        def decorator(func):
+            def wrapper(*args, **kwargs):
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    _, _, tb = sys.exc_info()
+                    traceback_info = traceback.extract_tb(tb)
+                    line = traceback_info[-1][1]
+                    file = traceback_info[-1][0]
+                    function_name = traceback_info[-1][2]
 
-        def wrapper(*args, **kwargs):
-            try:
-                return func(*args, **kwargs)
-            except Exception as e:
-                _, _, tb = sys.exc_info()
-                traceback_info = traceback.extract_tb(tb)
-                line = traceback_info[-1][1]
-                file = traceback_info[-1][0]
-                function_name = traceback_info[-1][2]
-
-                LogMx.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name])
-        
-        return wrapper
+                    LogMx.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
+            return wrapper
+        return decorator
         
