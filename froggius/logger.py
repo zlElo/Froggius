@@ -1,6 +1,6 @@
 """
 Froggius
-Version: v0.1.2
+Version: v0.1.4
 License: GPLv3
 
 Author of this file: zlElo
