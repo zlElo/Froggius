@@ -4,7 +4,7 @@ setup(
     name='froggius',
     packages=find_packages(include=['froggius']),
     description='Froggius is a dumb easy logging tool for python',
-    version='{{VERSION_PLACEHOLDER}}',
+    version='0.1.3',
     author='zlElo',
     author_email="mail@zlelo.de",
     url = "https://github.com/zlElo/Froggius",
