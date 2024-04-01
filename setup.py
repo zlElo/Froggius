@@ -9,7 +9,7 @@ setup(
     description='Froggius is a dumb easy logging tool for python',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='0.1.4',
+    version='0.1.3-1',
     author='zlElo',
     author_email="mail@zlelo.de",
     url = "https://github.com/zlElo/Froggius",
