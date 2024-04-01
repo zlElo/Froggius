@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/zlElo/Froggius/blob/main/res/froggius.png?raw=true">
+</p>
+
 # Froggius
 Froggius is a dumb easy logging tool for python
 
