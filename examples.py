@@ -2,7 +2,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-from froggius.logger import Froggius
+from froggius import Froggius
 
 # ----- Logging/Debugging -----
 # Example normal logging
