@@ -141,9 +141,6 @@ class Froggius():
             file_path (str, optional): The file path to write the log message to. Defaults to None.
             highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
             print_out (bool, optional): Whether to print the log message to the console. Defaults to True.
-
-        Returns:
-            None
         """
         current_date = datetime.datetime.now()
 
