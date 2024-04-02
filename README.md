@@ -34,7 +34,7 @@ pip install .
 Here are examples for the usage of Froggius. Import statement is following:
 
 ```py
-from froggius.logger import Froggius
+from froggius import Froggius
 ```
 
 ### Using debugger/logger
