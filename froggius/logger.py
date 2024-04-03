@@ -105,7 +105,7 @@ class Froggius():
             print(log_string, file=sys.stderr)
     
     @staticmethod
-    def catch(self, file_path=None, continue_onexpception=True):
+    def catch(file_path=None, continue_onexpception=True):
         """
         A decorator that catches exceptions and logs them with LogMx.error
 
@@ -129,7 +129,8 @@ class Froggius():
                     file = traceback_info[-1][0]
                     function_name = traceback_info[-1][2]
 
-                    self.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
+                    errorinstance = Froggius()
+                    errorinstance.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
 
                     if not continue_onexpception:
                         raise e
