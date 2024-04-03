@@ -12,7 +12,18 @@ class Froggius():
     Includes logging methods
     """
 
-    def debug(log_msg, file_path=None, print_out=True):
+    def __init__(self, file_path=None, print_out=None) -> None:
+        global glob_file_path, glob_print_out
+        if file_path is not None:
+            glob_file_path = file_path
+        else:
+            glob_file_path = None
+        if print_out is not None:
+            glob_print_out = print_out
+        else:
+            glob_print_out = None
+
+    def debug(log_msg, file_path=None, print_out=None):
         """
         Writes logs, optionally to a file.
 
@@ -30,15 +41,22 @@ class Froggius():
         current_date = datetime.datetime.now()
         log_string = f'[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
 
-        # check for filepath
+        # check for vars for filepath
+        if glob_file_path is not None:
+            file_path = glob_file_path
+
         if file_path is not None:
             with open(file_path, 'a') as log:
                 log.write(f'\n[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
 
-        if print_out:
+        if glob_print_out:
+            print(log_string, file=sys.stdout)
+        elif print_out:
+            print(log_string, file=sys.stdout)
+        elif glob_print_out is None and print_out is None:
             print(log_string, file=sys.stdout)
 
-    def error(log_msg, file_path=None, highlighting=True, print_out=True, line=None):
+    def error(log_msg, file_path=None, highlighting=True, print_out=None, line=None):
         """
         Writes errors, optionally to a file.
 
@@ -61,17 +79,24 @@ class Froggius():
 
         # get datetime
         current_date = datetime.datetime.now()
-        if highlighting == True:
+        if highlighting:
             log_string = f'[\033[91mERR\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
         else:
             log_string = f'[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
 
         # check for filepath
+        if glob_file_path is not None:
+            file_path = glob_file_path
+
         if file_path is not None:
             with open(file_path, 'a') as log:
                 log.write(f'\n[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}')
 
-        if print_out == True:
+        if glob_print_out:
+            print(log_string, file=sys.stderr)
+        elif print_out:
+            print(log_string, file=sys.stderr)
+        elif glob_print_out is None and print_out is None:
             print(log_string, file=sys.stderr)
     
     @staticmethod
@@ -106,7 +131,7 @@ class Froggius():
             return wrapper
         return decorator
     
-    def information(log_msg, file_path=None, highlighting=True, print_out=True):
+    def information(log_msg, file_path=None, highlighting=True, print_out=None):
         """
         A function to log information with optional file output and highlighting.
         
@@ -125,14 +150,21 @@ class Froggius():
             log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         
         # check for filepath
+        if glob_file_path is not None:
+            file_path = glob_file_path
+
         if file_path is not None:
             with open(file_path, 'a') as log:
                 log.write(f'\n[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
         
-        if print_out == True:
+        if glob_print_out:
+            print(log_string, file=sys.stdout)
+        elif print_out:
+            print(log_string, file=sys.stdout)
+        elif glob_print_out is None and print_out is None:
             print(log_string, file=sys.stdout)
 
-    def warning(log_msg, file_path=None, highlighting=True, print_out=True):
+    def warning(log_msg, file_path=None, highlighting=True, print_out=None):
         """
         Logs a warning message with an optional file path, highlighting, and print out.
 
@@ -150,9 +182,16 @@ class Froggius():
             log_string = f'[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
 
         # check for filepath
+        if glob_file_path is not None:
+            file_path = glob_file_path
+
         if file_path is not None:
             with open(file_path, 'a') as log:
                 log.write(f'\n[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
         
-        if print_out == True:
+        if glob_print_out:
+            print(log_string, file=sys.stdout)
+        elif print_out:
+            print(log_string, file=sys.stdout)
+        elif glob_print_out is None and print_out is None:
             print(log_string, file=sys.stdout)

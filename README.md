@@ -119,3 +119,26 @@ Output in log file:
 `
 [ERR] [01/04/2024 09:15:00] division by zero | Occured on line: 28 in /Users/username/path/examples.py, example_function()
 `
+
+### Using global configuration
+If you want to configure the file_path and the print_out for everything, you can do that with following line before all other Froggius statements:
+
+```py
+# configure print_out and file_path for everything
+Froggius(print_out=False, file_path='tests/example.log')
+
+Froggius.debug('Test normal')
+Froggius.error('Test error')
+Froggius.information('Test information')
+```
+
+It's also possible to say, that you want that all is not printed, but this `Froggius.debug('Test normal')` or `Froggius.information('Test information')`. Just work with the available parameters:
+
+```py
+# configure print_out and file_path for everything
+Froggius(print_out=False, file_path='tests/example.log')
+
+Froggius.debug('Test normal', print_out=True) # everything is not printed, but this line is printed
+Froggius.error('Test error')
+Froggius.information('Test information')
+```
