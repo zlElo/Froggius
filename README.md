@@ -35,6 +35,8 @@ Here are examples for the usage of Froggius. Import statement is following:
 
 ```py
 from froggius import Froggius
+
+logger = Froggius()
 ```
 
 ### Using debugger/logger
@@ -45,10 +47,10 @@ Use it as debugger/logger with following possible arguments:
 
 ```py
 # Example normal logging
-Froggius.debug('This is a normal debug log')
+logger.debug('This is a normal debug log')
 
 # This writes the log to a log file
-Froggius.debug('This is a normal debug log', 'tests/example.log', print_out=False)
+logger.debug('This is a normal debug log', 'tests/example.log', print_out=False)
 ```
 
 ### Using with predefinied errors
@@ -61,10 +63,10 @@ Use it as error logger with following possible arguments:
 
 ```py
 # Example error
-Froggius.error('This is an error log')
+logger.error('This is an error log')
 
 # This writes the error to a log file
-Froggius.error('This is an error log', 'tests/example.log', print_out=False)
+logger.error('This is an error log', 'tests/example.log', print_out=False)
 ```
 
 ### Using information logger
@@ -76,10 +78,10 @@ Use it as information logger with following possible arguments:
 
 ```py
 # Example information
-Froggius.information('This is an information log')
+logger.information('This is an information log')
 
 # This writes the information to a log file
-Froggius.information('This is an information log', 'tests/example.log', print_out=False)
+logger.information('This is an information log', 'tests/example.log', print_out=False)
 ```
 
 ### Using warning logger
@@ -91,17 +93,17 @@ Use it as warning logger with following possible arguments:
 
 ```py
 # Example warning
-Froggius.warning('This is a warning log')
+logger.warning('This is a warning log')
 
 # This writes the warning to a log file
-Froggius.warning('This is a warning log', 'tests/example.log', print_out=False)
+logger.warning('This is a warning log', 'tests/example.log', print_out=False)
 ```
 
 ### Using catching errors
 Use the catching errors methode, to catch and handle unexpected errors, warnings etc:
 
 ```py
-@Froggius.catch(file_path='tests/example.log')
+@logger.catch(file_path='tests/example.log')
 def example_function():
     """
     Information: Not working function, because of division by zero
@@ -125,20 +127,20 @@ If you want to configure the file_path and the print_out for everything, you can
 
 ```py
 # configure print_out and file_path for everything
-Froggius(print_out=False, file_path='tests/example.log')
+logger = Froggius(print_out=False, file_path='tests/example.log')
 
-Froggius.debug('Test normal')
-Froggius.error('Test error')
-Froggius.information('Test information')
+logger.debug('Test normal')
+logger.error('Test error')
+logger.information('Test information')
 ```
 
-It's also possible to say, that you want that all is not printed, but this `Froggius.debug('Test normal')` or `Froggius.information('Test information')`. Just work with the available parameters:
+It's also possible to say, that you want that all is not printed, but this `logger.debug('Test normal')` or `logger.information('Test information')`. Just work with the available parameters:
 
 ```py
 # configure print_out and file_path for everything
-Froggius(print_out=False, file_path='tests/example.log')
+logger = Froggius(print_out=False, file_path='tests/example.log')
 
-Froggius.debug('Test normal', print_out=True) # everything is not printed, but this line is printed
-Froggius.error('Test error')
-Froggius.information('Test information')
+logger.debug('Test normal', print_out=True) # everything is not printed, but this line is printed
+logger.error('Test error')
+logger.information('Test information')
 ```
