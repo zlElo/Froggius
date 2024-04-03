@@ -41,7 +41,7 @@ class Froggius():
         log_string = f'[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
 
         # check for vars for filepath
-        if self.glob_file_path is not None:
+        if self.glob_file_path is not None and file_path is None:
             file_path = self.glob_file_path
 
         if file_path is not None:
@@ -87,7 +87,7 @@ class Froggius():
             log_string = f'[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
 
         # check for filepath
-        if self.glob_file_path is not None:
+        if self.glob_file_path is not None and file_path is None:
             file_path = self.glob_file_path
 
         if file_path is not None:
@@ -104,8 +104,8 @@ class Froggius():
         if self.glob_print_out is None and print_out is None:
             print(log_string, file=sys.stderr)
     
-    @staticmethod
-    def catch(file_path=None, continue_onexpception=True):
+    # @staticmethod
+    def catch(self, file_path=None, continue_onexpception=True, print_out=None):
         """
         A decorator that catches exceptions and logs them with LogMx.error
 
@@ -120,6 +120,7 @@ class Froggius():
         """
         def decorator(func):
             def wrapper(*args, **kwargs):
+                file_path = None
                 try:
                     return func(*args, **kwargs)
                 except Exception as e:
@@ -128,9 +129,21 @@ class Froggius():
                     line = traceback_info[-1][1]
                     file = traceback_info[-1][0]
                     function_name = traceback_info[-1][2]
+                    highliting_loc = None
 
-                    errorinstance = Froggius()
-                    errorinstance.error(log_msg=str(e), highlighting=True, print_out=True, line=[line, file, function_name], file_path=file_path)
+                    if self.glob_file_path is not None and file_path is None:
+                        file_path = self.glob_file_path
+                    if self.glob_print_out:
+                        if print_out == False:
+                            pass
+                        else:
+                            highliting_loc = True
+                    if print_out and not self.glob_print_out:
+                        highliting_loc = True
+                    if self.glob_print_out is None and print_out is None:
+                        highliting_loc = True
+
+                    self.error(log_msg=str(e), highlighting=highliting_loc, print_out=print_out, line=[line, file, function_name], file_path=file_path)
 
                     if not continue_onexpception:
                         raise e
@@ -156,7 +169,7 @@ class Froggius():
             log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
         
         # check for filepath
-        if self.glob_file_path is not None:
+        if self.glob_file_path is not None and file_path is None:
             file_path = self.glob_file_path
 
         if file_path is not None:
@@ -194,7 +207,7 @@ class Froggius():
             log_string = f'[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
 
         # check for filepath
-        if self.glob_file_path is not None:
+        if self.glob_file_path is not None and file_path is None:
             file_path = self.glob_file_path
 
         if file_path is not None:
