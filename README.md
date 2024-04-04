@@ -10,7 +10,7 @@
 </p>
 
 # Froggius
-Froggius is a lightweight and dumb easy logging tool for python
+Froggius is a lightweight and dumb easy logging libary for python
 
 ---------
 
