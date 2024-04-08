@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/github/last-commit/zlElo/Froggius" alt="GitHub last commit" />
   <img src="https://img.shields.io/github/commit-activity/m/zlElo/Froggius" alt="GitHub commit activity month" />
   <img src="https://img.shields.io/github/license/zlElo/Froggius" alt="GitHub license" />
+  <a href="https://pepy.tech/project/structlog"><img src="https://static.pepy.tech/personalized-badge/froggius?period=month&units=international_system&left_color=grey&right_color=blue&left_text=Downloads%20/%20Month" alt="Downloads per month" /></a>
 </p>
 
 # Froggius
