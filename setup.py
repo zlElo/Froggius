@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 setup(
     name='froggius',
     packages=find_packages(include=['froggius']),
-    description='Froggius is a dumb easy logging tool for python',
+    description='Froggius is a lightweight and dumb easy logging libary for python',
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MPL-2.0',
