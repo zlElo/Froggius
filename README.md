@@ -17,6 +17,20 @@ Froggius is a lightweight and dumb easy logging libary for python
 ## Introduction
 Froggius is a lightweight python libary, which is designed for easy to use logging for all your programs. It makes it easy for everybody, but also brings a lot of options to configure it like you need it. An very interesting feature for example is the error catching for functions, which makes it easy to log unexpected errors, warnings etc.
 
+## Advantages of froggius
+Froggius is like in the introduction already said very lightweight and designed for efficiency, which means that the speed of the logging is much faster than other libarys. How fast it is, can you see in this line chart:
+
+<p align="center">
+  <img src="https://github.com/zlElo/Froggius/blob/main/res/tests/froggius_exec.png?raw=true" style="width: 770px">
+</p>
+
+This example runs following debug command 60 times and prints every time the log to the console and stdout:
+```py
+frogger.debug('Example Debug Message')
+```
+
+This massive speed improvement helps your program, to log like you need it without performance disadvantages.
+
 ## Installation
 You can install Froggius with following command:
 ```
