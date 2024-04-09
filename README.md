@@ -27,7 +27,7 @@ Froggius is like in the introduction already said very lightweight and designed 
 
 This example runs following debug command 60 times and prints every time the log to the console and stdout:
 ```py
-frogger.debug('Example Debug Message')
+logger.debug('Example Debug Message')
 ```
 
 This massive speed improvement helps your program, to log like you need it without performance disadvantages.
