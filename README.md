@@ -32,6 +32,7 @@ frogger.debug('Example Debug Message')
 
 This massive speed improvement helps your program, to log like you need it without performance disadvantages.
 
+System informations: MacOS Sonoma 14.4.1, MacBook Air M2, Python 3.12.1
 ## Installation
 You can install Froggius with following command:
 ```
