@@ -12,17 +12,12 @@ class Froggius():
     Includes logging methods
     """
     
-    def __init__(self, file_path=None, print_out=None) -> None:
-        if file_path is not None:
-            self.glob_file_path = file_path
-        else:
-            self.glob_file_path = None
-        if print_out is not None:
-            self.glob_print_out = print_out
-        else:
-            self.glob_print_out = None
+    def __init__(self, file_path=None, print_out=None, date_format=None) -> None:
+        self.glob_file_path = file_path
+        self.glob_print_out = print_out
+        self.glob_date_format = date_format
 
-    def debug(self, log_msg, file_path=None, print_out=None):
+    def debug(self, log_msg, file_path=None, print_out=None, date_format=None):
         """
         Writes logs, optionally to a file.
 
@@ -38,7 +33,12 @@ class Froggius():
             Whether the log should be printed to the stdout, by default True
         """
         current_date = datetime.datetime.now()
-        log_string = f'[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+        if date_format is None:
+            if self.glob_date_format is not None:
+                date_format = self.glob_date_format
+            else:
+                date_format = "%Y/%m/%d %H:%M:%S"
+        log_string = f'[DBG] [{current_date.strftime(date_format)}] {log_msg}'
 
         # check for vars for filepath
         if self.glob_file_path is not None and file_path is None:
@@ -46,7 +46,7 @@ class Froggius():
 
         if file_path is not None:
             with open(file_path, 'a') as log:
-                log.write(f'\n[DBG] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
+                log.write(f'\n[DBG] [{current_date.strftime(date_format)}] {log_msg}')
 
         if self.glob_print_out:
             if print_out == False:
@@ -58,7 +58,7 @@ class Froggius():
         if self.glob_print_out is None and print_out is None:
             print(log_string, file=sys.stdout)
 
-    def error(self, log_msg, file_path=None, highlighting=True, print_out=None, line=None):
+    def error(self, log_msg, file_path=None, highlighting=True, print_out=None, line=None, date_format=None):
         """
         Writes errors, optionally to a file.
 
@@ -81,10 +81,16 @@ class Froggius():
 
         # get datetime
         current_date = datetime.datetime.now()
+        if date_format is None:
+            if self.glob_date_format is not None:
+                date_format = self.glob_date_format
+            else:
+                date_format = "%Y/%m/%d %H:%M:%S"
+
         if highlighting:
-            log_string = f'[\033[91mERR\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
+            log_string = f'[\033[91mERR\033[0m] [{current_date.strftime(date_format)}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
         else:
-            log_string = f'[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
+            log_string = f'[ERR] [{current_date.strftime(date_format)}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}'
 
         # check for filepath
         if self.glob_file_path is not None and file_path is None:
@@ -92,7 +98,7 @@ class Froggius():
 
         if file_path is not None:
             with open(file_path, 'a') as log:
-                log.write(f'\n[ERR] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}')
+                log.write(f'\n[ERR] [{current_date.strftime(date_format)}] {log_msg} {f"| Occured on line: {line[0]} in {line[1]}, {line[2]}()" if line is not None else ""}')
 
         if self.glob_print_out:
             if print_out == False:
@@ -150,7 +156,7 @@ class Froggius():
             return wrapper
         return decorator
     
-    def information(self, log_msg, file_path=None, highlighting=True, print_out=None):
+    def information(self, log_msg, file_path=None, highlighting=True, print_out=None, date_format=None):
         """
         A function to log information with optional file output and highlighting.
         
@@ -162,11 +168,16 @@ class Froggius():
         """
 
         current_date = datetime.datetime.now()
+        if date_format is None:
+            if self.glob_date_format is not None:
+                date_format = self.glob_date_format
+            else:
+                date_format = "%Y/%m/%d %H:%M:%S"
 
         if highlighting:
-            log_string = f'[\033[32mINF\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'[\033[32mINF\033[0m] [{current_date.strftime(date_format)}] {log_msg}'
         else:
-            log_string = f'[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'[INF] [{current_date.strftime(date_format)}] {log_msg}'
         
         # check for filepath
         if self.glob_file_path is not None and file_path is None:
@@ -174,7 +185,7 @@ class Froggius():
 
         if file_path is not None:
             with open(file_path, 'a') as log:
-                log.write(f'\n[INF] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
+                log.write(f'\n[INF] [{current_date.strftime(date_format)}] {log_msg}')
         
         if self.glob_print_out:
             if print_out == False:
@@ -186,10 +197,19 @@ class Froggius():
         if self.glob_print_out is None and print_out is None:
             print(log_string, file=sys.stdout)
 
-    def info(self, log_msg, file_path=None, highlighting=True, print_out=None):
-        return self.information(log_msg, file_path, highlighting, print_out)
+    def info(self, log_msg, file_path=None, highlighting=True, print_out=None, date_format=None):
+        """
+        A function to log information with optional file output and highlighting.
+        
+        Parameters:
+            log_msg (str): The message to be logged.
+            file_path (str, optional): The file path to log to. Defaults to None.
+            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
+            print_out (bool, optional): Whether to print the log message. Defaults to True.
+        """
+        return self.information(log_msg, file_path, highlighting, print_out, date_format)
 
-    def warning(self, log_msg, file_path=None, highlighting=True, print_out=None):
+    def warning(self, log_msg, file_path=None, highlighting=True, print_out=None, date_format=None):
         """
         Logs a warning message with an optional file path, highlighting, and print out.
 
@@ -200,11 +220,16 @@ class Froggius():
             print_out (bool, optional): Whether to print the log message to the console. Defaults to True.
         """
         current_date = datetime.datetime.now()
+        if date_format is None:
+            if self.glob_date_format is not None:
+                date_format = self.glob_date_format
+            else:
+                date_format = "%Y/%m/%d %H:%M:%S"
 
         if highlighting:
-            log_string = f'[\033[93mWRN\033[0m] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'[\033[93mWRN\033[0m] [{current_date.strftime(date_format)}] {log_msg}'
         else:
-            log_string = f'[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}'
+            log_string = f'[WRN] [{current_date.strftime(date_format)}] {log_msg}'
 
         # check for filepath
         if self.glob_file_path is not None and file_path is None:
@@ -212,7 +237,7 @@ class Froggius():
 
         if file_path is not None:
             with open(file_path, 'a') as log:
-                log.write(f'\n[WRN] [{current_date.strftime("%d/%m/%Y %H:%M:%S")}] {log_msg}')
+                log.write(f'\n[WRN] [{current_date.strftime(date_format)}] {log_msg}')
         
         if self.glob_print_out:
             if print_out == False:
