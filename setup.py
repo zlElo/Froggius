@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='MPL-2.0',
-    version='0.1.6-3',
+    version='0.1.7',
     author='zlElo',
     author_email="mail@zlelo.de",
     url = "https://github.com/zlElo/Froggius",
