@@ -31,6 +31,8 @@ class Froggius():
             Whether the DEBUG tag should be highlighted with ANSI escape sequences, by default True
         print_out : bool, optional
             Whether the log should be printed to the stdout, by default True
+        date_format : str, optional
+            The format of the date in the log message, by default None
         """
         current_date = datetime.datetime.now()
         if date_format is None:
@@ -77,6 +79,8 @@ class Froggius():
             A list containing information about the line where the error occurred,
             by default None. The list should contain [line number, file name,
             function name].
+        date_format : str, optional
+            The format of the date in the log message, by default None
         """
 
         # get datetime
@@ -161,10 +165,18 @@ class Froggius():
         A function to log information with optional file output and highlighting.
         
         Parameters:
-            log_msg (str): The message to be logged.
-            file_path (str, optional): The file path to log to. Defaults to None.
-            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
-            print_out (bool, optional): Whether to print the log message. Defaults to True.
+        ----------
+
+        log_msg : str
+            The message to be logged.
+        file_path str : optional 
+            The file path to log to. Defaults to None.
+        highlighting : bool, optional
+            Whether to highlight the log message. Defaults to True.
+        print_out : bool, optional
+            Whether to print the log message. Defaults to True.
+        date_format : str, optional
+            The format of the date in the log message, by default None
         """
 
         current_date = datetime.datetime.now()
@@ -202,10 +214,18 @@ class Froggius():
         A function to log information with optional file output and highlighting.
         
         Parameters:
-            log_msg (str): The message to be logged.
-            file_path (str, optional): The file path to log to. Defaults to None.
-            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
-            print_out (bool, optional): Whether to print the log message. Defaults to True.
+        ----------
+
+        log_msg : str
+            The message to be logged.
+        file_path str : optional 
+            The file path to log to. Defaults to None.
+        highlighting : bool, optional
+            Whether to highlight the log message. Defaults to True.
+        print_out : bool, optional
+            Whether to print the log message. Defaults to True.
+        date_format : str, optional
+            The format of the date in the log message, by default None
         """
         return self.information(log_msg, file_path, highlighting, print_out, date_format)
 
@@ -214,10 +234,18 @@ class Froggius():
         Logs a warning message with an optional file path, highlighting, and print out.
 
         Parameters:
-            log_msg (str): The warning message to be logged.
-            file_path (str, optional): The file path to write the log message to. Defaults to None.
-            highlighting (bool, optional): Whether to highlight the log message. Defaults to True.
-            print_out (bool, optional): Whether to print the log message to the console. Defaults to True.
+        ----------
+
+        log_msg : str
+            The message to be logged.
+        file_path str : optional 
+            The file path to log to. Defaults to None.
+        highlighting : bool, optional
+            Whether to highlight the log message. Defaults to True.
+        print_out : bool, optional
+            Whether to print the log message. Defaults to True.
+        date_format : str, optional
+            The format of the date in the log message, by default None
         """
         current_date = datetime.datetime.now()
         if date_format is None:
